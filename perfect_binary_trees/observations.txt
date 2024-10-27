@@ -1,0 +1,26 @@
+1. (claim) Roots have even labels. Checked Programmatically for trees upto height 3 (#nodes = 15)
+
+Approach Tried : 
+
+1st method
+
+m = #edges
+m is even of complete binary trees.
+
+After assining an odd edge to root, 
+#even labels node left = m / 2 + 1
+#odd labels node left = m / 2 - 1
+
+Try to reason that using the above number of even and odd node labels,
+#even edge labels != #odd edge labels != m / 2
+
+Try to use combinatorics, 
+Number of even edges => odd node -- odd node edge + even node -- even node edge = m / 2 
+Number of odd edges => odd node -- even node edge = m / 2 
+If root is odd then this sort of configuration is not possible to obtain ?? 
+
+
+2nd method
+
+Assign each node a value depending on the difference between #even nodes and #odd nodes in its subtree (balancing factor). 
+Try to show that there will some problem in assining labeling if the root is odd using these balancing factors.
