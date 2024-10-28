@@ -1,0 +1,70 @@
+Different approaches : 
+
+1. Combine two graceful structures (say T1 and T2) together similar to the what was done for symmetrical trees in reference Sandy_2018_J._Phys.__Conf._Ser._1008 : Alternative construction of graceful symmetric trees
+
+Observations : 
+    a. If T1 and T2 have different sizes, the principal diagonal in the final generalised adjacency matrix will not contain all zeroes. So they should be of same size. 
+    b. If the generalised adjacency matrix of T1 is differnt from that of T2, then the final generalised adjacency matrix won't remain symmetric. This will not be a valid adjacency matrix. So these structure should be same. 
+    
+    So we can try to generate more graceful structures from a sub graceful structure. 
+    But what we get as the final graph may or may not have the same intended structure.  
+
+
+
+
+2. Count the #graceful labelings for graphs / trees / perfect binary trees.
+
+If we want to count the graceful labeling for a tree with m nodes, we will try to count the valid assignments of 0s and 1s in a matrix of size (m + 1) * (m + 1).
+
+Valid assignment should satisfy : 
+    a. Single #1 in each diagonal except the principal diagonal. 
+    b. Should be symmetric. 
+
+The above matrix will correspond to different structures with m edges. 
+(And m+1 nodes where some nodes may be isolated and not the part of the main structure)
+
+Now to get to the exact intended structure more restrictions should be imposed on these assignments.
+
+    a. For perfect binary tree (height = h): 
+
+    The #1s in each row is the degree of node with that label. 
+    We can restrict the assignment such that there are 
+        i.   1 node with degree 2                 (root)
+        ii.  2^h nodes with degree 1              (leaf)
+        iii. 2^h - 2 nodes with degree 2          (interior nodes)
+
+    Do a height check to check the ismorphism for perfect binary tree. 
+    We can find the height of the formed structure by recursively traversing the rows of the matrix and maintaining the lenght of the different paths obtained. 
+    This should be same as height of the original input perfect binary tree. 
+
+    Is height check sufficient to check isomorphism for perfect binary trees ?
+    Perfect binary trees have the  most compact structures in term of its height. So if a node connected in a different manner / configuration it will lead to a tree with larger height. Therefore height is valid and sufficient check for isomorphism in perfect binary trees. 
+
+
+    b. Use degree sequence 
+    Use degree sequence to restrict the strcture.
+    (Try to use DK series to pin down the exact structure) 
+
+    To identity if a given degree sequence is valid (graphic), we can use Havel-Hakimi Algorithm
+    Havel-Hakimi Theor : 
+    The non increasing sequence (d1, d2, ..., dn) is graphic if and only if the sequence(d2−1, d3−1, ..., d(d1+1)−1, d(d1+2), d(d1+3), ..., dn) is also graphic.
+
+    Algorithm:
+    i.  Pick the vertex with highest target degree. Lets call this value k.
+    ii. Connect this vertex to next k vertices having highest degree. Now this vertex has been exhausted.
+    Repeat steps (i) and (ii) till you exhaust all the vertices.
+
+    If all the vertices get exhausted, then the sequence has reduced to all zeroes and hence the sequence is graphic.
+    If you end up with non-zero vertices that can't be exhausted further, then the sequence isn't graphic.
+
+    Which graphs can be uniquely identified from their degree sequence
+    => Threshold graphs 
+    Threshold graphs : 
+    In graph theory, a threshold graph is a graph that can be constructed from a one-vertex graph by repeated applications of the following two operations:
+
+    i.  Addition of a single isolated vertex to the graph.
+    ii. Addition of a single dominating vertex to the graph, i.e. a single vertex that is connected to all other vertices.
+
+    The trees which are threshold in nature are star trees. 
+    All star trees are graceful. 
+
