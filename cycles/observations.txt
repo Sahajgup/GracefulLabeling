@@ -1,0 +1,8 @@
+Already known results for cycles : 
+1. The cycle graph Cn is graceful if, and only if, n ≡ 0, 3 (mod 4).
+
+Observations : 
+
+For cycle C6, there was no solution when using node labels from {0, 1, 2, ...., 18} for 1st version (a) of the relaxation problem. 
+
+To find solution of graceful problem, it is enough to check value k upto ≈ m^2 / 4 

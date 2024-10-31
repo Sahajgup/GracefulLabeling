@@ -1,0 +1,9 @@
+1. Relaxed version of graceful labeling problem (k - graceful) for non graceful cycles. 
+
+K-graceful labeling is a function f : V → {0, 1, 2, ..., m + k} for some k ≥ 0 (m = #edges) that satisfies all the original conditions of graceful labeling with certain differences in the range of values which induced edges can take. 
+
+    a. Edge label ∈ {1, 2, ..., m}
+    b. Edge label ∈ {1, 2, ..., m + k}, k > m
+    c. Edge label ∈ {k, k+1, ...., m+k-1}
+
+The notion of k-graceful graphs was introduced independently by Slater and Maheo and Thuillier in 1982, with definition (c).
