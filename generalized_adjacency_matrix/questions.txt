@@ -1,0 +1,2 @@
+1. Extend generalised adjacency matrix from other structures of same size. 
+2. Count #graceful labeling for a tree / perfect binary tree. 

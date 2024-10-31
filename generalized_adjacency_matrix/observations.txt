@@ -67,4 +67,3 @@ Now to get to the exact intended structure more restrictions should be imposed o
 
     The trees which are threshold in nature are star trees. 
     All star trees are graceful. 
-
