@@ -1,0 +1,10 @@
+Total #graceful labelings : 492
+
+Missing node label          frequency
+    3                           26
+    4                           80    
+    5                           80
+    6                           120
+    7                           80
+    8                           80
+    9                           26

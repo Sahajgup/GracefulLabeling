@@ -6,3 +6,26 @@ Observations :
 For cycle C6, there was no solution when using node labels from {0, 1, 2, ...., 18} for 1st version (a) of the relaxation problem. 
 
 To find solution of graceful problem, it is enough to check value k upto ≈ m^2 / 4 
+
+--------------------------------------
+
+- Counting graceful labelings for
+- Cycles C-4k
+#Edges      #Graceful labelings
+4           2
+8           24
+12          492
+16          20564
+20 
+
+--------------------------------------
+
+- Cycles C-4k+3
+#Edges      #Graceful labelings
+3           2
+7           12
+11          208
+15          7764
+19          424784
+
+--------------------------------------
