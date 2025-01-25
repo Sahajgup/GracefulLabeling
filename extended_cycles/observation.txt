@@ -1,0 +1,3 @@
+Extended Cycles 
+
+Definition : An extended cycle is a graph formed by starting with a simple cycle and attaching a single new vertex to each original vertex of the cycle via an edge. The result is a spiky structure with twice as many vertices as the original cycle.
