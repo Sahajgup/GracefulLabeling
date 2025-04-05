@@ -1,0 +1,18 @@
+\begin{thebibliography}{1}
+
+\bibitem{kintali2009graceful}
+Kintali.
+\newblock Graceful tree conjecture, June 23 2009.
+
+\bibitem{articleRosa}
+Alexander Rosa.
+\newblock On certain valuations of the vertices of a graph.
+\newblock {\em Journal of Graph Theory - JGT}, 01 1967.
+
+\bibitem{DBLP:journals/iandc/SinclairJ89}
+Alistair Sinclair and Mark Jerrum.
+\newblock Approximate counting, uniform generation and rapidly mixing markov
+  chains.
+\newblock {\em Inf. Comput.}, 82(1):93--133, 1989.
+
+\end{thebibliography}

@@ -1,0 +1,264 @@
+% --- Adapted from LaTeX Lecture Notes Template - S. Venkatraman ---
+%%% Begin Preamble
+
+\documentclass[letterpaper, 12pt]{article}
+
+% Packages
+\usepackage{tcolorbox,lipsum,pgfplots,graphicx,graphics,pgf,tikz,
+  wrapfig, subfig,float, amsfonts,amssymb,amsmath, amsthm,
+  amssymb, mathtools, dsfont, units,  listings, color, inconsolata,
+  pythonhighlight,fancyhdr, xcolor, sectsty, hyperref, enumerate,
+  enumitem, framed,newpxtext, newpxmath, inconsolata,titlesec}
+\usepackage[font={it,footnotesize}]{caption}
+\usepackage[bottom]{footmisc}
+\usepackage[left=1.35in, right=1.35in, top=1.0in, bottom=.9in, headsep=.2in, footskip=0.35in]{geometry}
+\usepackage[subfigure]{tocloft}
+
+\renewcommand{\baselinestretch}{1.2}
+\setlength{\parskip}{1.3mm}
+\allowdisplaybreaks
+
+\hypersetup{colorlinks=true, linkcolor=RoyalBlue, citecolor=red, urlcolor=ForestGreen}
+
+\titleformat{\section}{\large\bfseries}{{\fontsize{19}{19}\selectfont\textreferencemark}\;\; }{0em}{}
+\titleformat{\subsection}{\normalsize\bfseries\selectfont}{\thesubsection\;\;\;}{0em}{}
+\setlist[itemize]{wide=0pt, leftmargin=16pt, labelwidth=10pt, align=left}
+
+\setlength{\cftbeforesecskip}{.9ex}
+\cftsetindents{section}{0em}{0em}
+\renewcommand{\cfttoctitlefont}{\large\bfseries}
+\makeatletter
+\renewcommand{\cftsecpresnum}{\begin{lrbox}{\@tempboxa}}
+  \renewcommand{\cftsecaftersnum}{\end{lrbox}}
+\makeatother
+
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+% Shortcut for bold text in math mode, e.g. $\b{X}$
+\let\b\mathbf
+
+% Shortcut for bold Greek letters, e.g. $\bg{\beta}$
+\let\bg\boldsymbol
+
+% Shortcut for calligraphic script, e.g. %\mc{M}$
+\let\mc\mathcal
+
+% \mathscr{(letter here)} is sometimes used to denote vector spaces
+\usepackage[mathscr]{euscript}
+
+% Convergence: right arrow with optional text on top
+% E.g. $\converge[p]$ for converges in probability
+\newcommand{\converge}[1][]{\xrightarrow{#1}}
+
+% Weak convergence: harpoon symbol with optional text on top
+% E.g. $\wconverge[n\to\infty]$
+\newcommand{\wconverge}[1][]{\stackrel{#1}{\rightharpoonup}}
+
+% Equality: equals sign with optional text on top
+% E.g. $X \equals[d] Y$ for equality in distribution
+\newcommand{\equals}[1][]{\stackrel{\smash{#1}}{=}}
+
+% Normal distribution: arguments are the mean and variance
+% E.g. $\normal{\mu}{\sigma}$
+\newcommand{\normal}[2]{\mathcal{N}\left(#1,#2\right)}
+
+% Uniform distribution: arguments are the left and right endpoints
+% E.g. $\unif{0}{1}$
+\newcommand{\unif}[2]{\text{Uniform}(#1,#2)}
+
+% Independent and identically distributed random variables
+% E.g. $ X_1,...,X_n \iid \normal{0}{1}$
+\newcommand{\iid}{\stackrel{\smash{\text{iid}}}{\sim}}
+
+% Sequences (this shortcut is mostly to reduce finger strain for small hands)
+% E.g. to write ${A_n}_{n\geq 1}$, do $\bk{A_n}{n\geq 1}$
+\newcommand{\bk}[2]{{#1}_{#2}}
+
+% Math mode symbols for common sets and spaces. Example usage: $\R$
+\newcommand{\R}{\mathbb{R}}	% Real numbers
+\newcommand{\C}{\mathbb{C}}	% Complex numbers
+\newcommand{\Q}{\mathbb{Q}}	% Rational numbers
+\newcommand{\Z}{\mathbb{Z}}	% Integers
+\newcommand{\N}{\mathbb{N}}	% Natural numbers
+\newcommand{\F}{\mathcal{F}}	% Calligraphic F for a sigma algebra
+\newcommand{\El}{\mathcal{L}}	% Calligraphic L, e.g. for L^p spaces
+
+% Math mode symbols for probability
+\newcommand{\pr}{\mathbb{P}}	% Probability measure
+\newcommand{\I}{\mathbb{I}}	% Indicator function
+\newcommand{\E}{\mathbb{E}}	% Expectation, e.g. $\E(X)$
+\newcommand{\var}{\text{Var}}	% Variance, e.g. $\var(X)$
+\newcommand{\cov}{\text{Cov}}	% Covariance, e.g. $\cov(X,Y)$
+\newcommand{\corr}{\text{Corr}}	% Correlation, e.g. $\corr(X,Y)$
+\newcommand{\B}{\mathcal{B}}	% Borel sigma-algebra
+
+% Other miscellaneous symbols
+\newcommand{\tth}{\text{th}}	% Non-italicized 'th', e.g. $n^\tth$
+\newcommand{\Oh}{\mathcal{O}}	% Big-O notation, e.g. $\O(n)$
+\newcommand{\1}{\mathds{1}}	% Indicator function, e.g. $\1_A$
+
+% Additional commands for math mode
+\DeclareMathOperator*{\argmax}{argmax}		% Argmax, e.g. $\argmax_{x\in[0,1]} f(x)$
+\DeclareMathOperator*{\argmin}{argmin}		% Argmin, e.g. $\argmin_{x\in[0,1]} f(x)$
+\DeclareMathOperator*{\spann}{Span}		% Span, e.g. $\spann{X_1,...,X_n}$
+\DeclareMathOperator*{\bias}{Bias}		% Bias, e.g. $\bias(\hat\theta)$
+\DeclareMathOperator*{\ran}{ran}			% Range of an operator, e.g. $\ran(T) 
+\DeclareMathOperator*{\dv}{d\!}			% Non-italicized 'with respect to', e.g. $\int f(x) \dv x$
+\DeclareMathOperator*{\diag}{diag}		% Diagonal of a matrix, e.g. $\diag(M)$
+\DeclareMathOperator*{\trace}{trace}		% Trace of a matrix, e.g. $\trace(M)$
+\DeclareMathOperator*{\supp}{supp}		% Support of a function, e.g., $\supp(f)$
+
+% Numbered theorem, lemma, etc. settings - e.g., a definition, lemma, and theorem appearing in that 
+% order in Lecture 2 will be numbered Definition 2.1, Lemma 2.2, Theorem 2.3. 
+% Example usage: \begin{theorem}[Name of theorem] Theorem statement \end{theorem}
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+
+% Un-numbered theorem, lemma, etc. settings
+% Example usage: \begin{lemma*}[Name of lemma] Lemma statement \end{lemma*}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem*{definition*}{Definition}
+\newtheorem*{example*}{Example}
+\newtheorem*{remark*}{Remark}
+\newtheorem*{claim}{Claim}
+
+% --- Left/right header text (to appear on every page) ---
+
+
+
+% Define Exercise Environment
+\newtcolorbox{exercise}[2][]{%
+  colback=gray!5!white,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Exercise #2,
+  #1
+}
+
+\newenvironment{solution}
+{\par\vspace{1em}\noindent\textbf{Solution.}\quad}
+{\hfill$\blacksquare$\par\vspace{1em}}
+
+% Do not include a line under header or above footer
+\pagestyle{fancy}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0pt}
+
+% Right header text: Lecture number and title
+\renewcommand{\sectionmark}[1]{\markright{#1} }
+\fancyhead[R]{\small\textit{\nouppercase{\rightmark}}}
+
+% Left header text: Short course title, hyperlinked to table of contents
+\fancyhead[L]{\hyperref[sec:contents]{\small BGK's notes}}
+
+%%% End Preamble
+
+% --- Document starts here ---
+
+\begin{document}
+
+\title{Notes for Graceful Labeling }
+\author{Benny George Kenkireth}
+\date{}
+\maketitle
+% \tableofcontents\label{sec:contents}
+
+
+\section{Introduction}
+This is my notes for the various ideas generated during the discussions with Sahaj and Srinibas.
+\section{Problem Description}
+We are given a graph $G$ on $n$ vertices and $m$ edges. We consider labeling the vertices using labels $\{0,1, \ldots , m\}$. The vertex labels induce an edge labeling as follows; The an edge $(u,v)$ is labeled $\mid u -v \mid$. A labeling is called $\b{graceful}$ if the induced edge labels form the set $\{1,2,\dots,m\}$. You can find more information here.\cite{articleRosa}\cite{kintali2009graceful}
+
+
+We are interested in counting the number of graceful labellings for for a cycle $C_{n}$.
+
+
+\section{Approximate Counting}
+Let $\sigma = \sigma_{0}\sigma_{1}\ldots\sigma_{m}$ be a permutation chosen uniformly at random. Each permutation will correspond to a labeling on $C_{m}$ as follows. The label $\sigma_{0}$ is an unused label. Vertex $i$ gets the label $\sigma_{i}$. Lets call this labeling as $l_{\sigma}$. We are interested in knowing if $l_{\sigma}$ is graceful. Let $p$ be the probability that $l_{\sigma}$ is graceful. Then, the number of graceful labelings are $p\cdot(m+1)! $ You can find more about approximate counting and uniform generation here\cite{DBLP:journals/iandc/SinclairJ89}.
+
+
+With the aim of computing/approximating  $p$, we define the following random variables. Let $X_{i}$ denote the induced label of the edge $(i,i+1)$ where $1\leq i\leq m-1 $. Let $X_{m}$ denote the label of the edge $(m,1)$. In other words, $X_{i} =\mid\sigma_{i+1}-\sigma_{i}\mid$ Next, we define random variables $Y_{i,j}$ where $i \neq j$ and $1\leq i,j \leq m$. $Y_{i,j} = \I_{\{X_{i}==X_{j}\}}$. Finally, we define the random variable  $\displaystyle Y = \sum_{i,j}Y_{i,j}$. Note that if the random labeling is graceful then $Y$ is $0$.
+
+\begin{figure}[htbp]
+\centerline{\begin{tikzpicture}[every node/.style={circle,draw,inner sep=1pt}, scale=2]
+  \def\n{9} % number of visible nodes
+  \def\radius{1.5}
+
+  % Draw visible nodes in a circle
+  \foreach \i in {1,...,3}
+  {
+    \node (v\i) at ({\radius*cos(360/\n*(\i-1))}, {\radius*sin(360/\n*(\i-1))}) {\tiny{$\sigma_{\i}$}};
+  }
+
+    \foreach \i in {4,...,\numexpr\n-1\relax}
+  {
+    \node (v\i) at ({\radius*cos(360/\n*(\i-1))}, {\radius*sin(360/\n*(\i-1))}) {\textcolor{white}{\tiny{$V_{\i}$}}};
+  }
+
+  \node(v\n) at  ({\radius*cos(360/\n*(\n-1))}, {\radius*sin(360/\n*(\n-1))}){\tiny{$\sigma_{n}$}};
+
+  % Draw edges between consecutive nodes
+    \foreach \i in {1,...,3}
+  {
+    \pgfmathtruncatemacro{\j}{\i+1}
+    \draw (v\i) -- node[midway, above, draw=none, shape=rectangle, inner sep=0]{\strut \tiny{$X_{\i}$}}  (v\j);
+  }
+
+  \foreach \i in {4,...,\numexpr\n-1}
+  {
+    \pgfmathtruncatemacro{\j}{\i+1}
+    \draw (v\i) -- (v\j);
+  }
+
+  \draw (v\n)-- (v1);
+  % Add dotted line and "..." to suggest rest of cycle
+  %\draw[dashed] (v\n) -- ++({360/\n}:\radius*0.8);
+  %\node at ($(v\n)!1.15!(v1)$) {$\cdots$};
+  %\draw[dashed] ($(v1)+({-360/\n}:\radius*0.8)$) -- (v1);
+\end{tikzpicture}
+}
+\caption[]{Random Labeling of $C_{n}$}
+\end{figure}
+
+
+\subsection{Computing the expectation of $Y$}
+
+Let \( \displaystyle Y = \sum_{i \leq j} Y_{i,j} \). We compute \( \mathbb{E}[Y] \) as follows:
+
+\begin{align*}
+\mathbb{E}[Y] 
+&= \mathbb{E}\Big[\sum_{i<j} Y_{i,j}\Big] \\
+&= \sum_{i< j}\mathbb{E}[Y_{i,j}] 
+&& \text{(Linearity of expectation)} \\
+&= \sum_{i}\mathbb{E}[Y_{i,i+1}]  + \sum_{i+1<j}\mathbb{E}[Y_i]
+&& \text{(Splitting the summation)}
+\end{align*}
+
+$Y_{i,i+1}$ depends on $X_{i}$ and $X_{i+1}$ which in turn are determined by $\sigma_{i},\sigma_{i+1} \textrm{  and  } \sigma_{i+2}$. The first term of the summation has $m$ terms. Once $\sigma_{i}$ and $\sigma_{i+1}$ are fixed, there are a fixed number of choices for $\sigma_{i+2}$ which makes $Y_{i,i+1}$ equal to 1. Thus the probability of this is some $\frac{c}{n}$. The second term can also be treated similarly.
+The overall sum can thus be approximated to $cn$.
+
+We can now consider the following question.
+
+{\it{ What is the probability that a random variable whose expectation is at aleast  $cn$ takes the value 0?} If this probability can be shown to be very small, then the number of graceful labelings will be small as well.}
+
+Observation: $Y$ depends on $\binom{n}{2}$ random variables. If any of these random variables take a non zero value, then $Y$ is non zero. Can we show
+that $Y$ is zero with only a very small probability? This would have been easy if the random variables were independent. What can we salvage with the kind of dependency we have?
+\bibliographystyle{plain}
+\bibliography{~/Documents/Work/latexthings/mybib.bib}
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:
+
+
